@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source .env
+
+action="${3:-collect}"
+args="${4:-[]}"
+
+gcloud pubsub topics publish --message="{\"service\":\"$1\", \"asset\":\"$2\", \"dest\":\"bigquery\",\"action\":\"$action\", \"arguments\":$args}" $function_topic

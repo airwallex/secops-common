@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source .env
+gcloud scheduler jobs create pubsub $1 --schedule="$2" --topic=$function_topic --message-body="$3" --time-zone=Antarctica/Macquarie

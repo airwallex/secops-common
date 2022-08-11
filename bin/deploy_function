@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source .env
+if [ -z ${connector_name+x} ]; 
+  then 
+    gcloud functions deploy --trigger-topic $function_topic --timeout 540 --runtime=python38 --entry-point process_message $function_name --service-account $function_service_account --memory=$function_memory;
+  else 
+    gcloud functions deploy --trigger-topic $function_topic --timeout 540 --runtime=python38 --entry-point process_message $function_name --service-account $function_service_account --memory=$function_memory --vpc-connector $connector_name --egress-settings all;
+fi
+

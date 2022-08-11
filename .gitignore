@@ -1,0 +1,8 @@
+common/__pycache__
+dist/
+build/
+.vscode/
+.DS_Store
+data
+out/
+__pycache__
